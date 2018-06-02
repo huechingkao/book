@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="."  method="get">
+<label class="inline">查詢讀者：<input type="text" name = "keyword"><input type="submit" value="送出"/></label>
+</form>
+{% if keyword %}
+  關鍵字：{{keyword}}
+{% else %}
+  全部讀者
+{% endif %}
+<hr>
+{% for reader in reader_list %}
+<a href="/web/circulate/step2/{{reader.id}}">{{reader.realname}}</a><BR>
+{% endfor %}
+    {% load pagination %}
+    {% get_pagination %}
+{% endblock %}

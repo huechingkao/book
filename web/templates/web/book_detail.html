@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table>
+  <tr>
+  <td>書名</td>
+  <td>{{book.title}}</td>
+  </tr>
+  <tr>
+  <td>作者</td>
+  <td>{{book.author}}</td>
+  </tr>
+  <tr>
+  <td>日期</td>
+  <td>{{book.publication_date}}</td>
+  </tr>  
+</table>
+<hr>
+借閱記錄
+{% load tag %}
+<table>
+  <tr><th>借閱人</th><th>借出時間</th><th>歸還時間</th></tr> 
+  {% for circulation in circulations %}
+  <tr><td>{{circulation.reader_id|reader_realname}}</td><td>{{circulation.date_checkout}}</td><td>{{circulation.date_return}}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

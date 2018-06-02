@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/web/book/create">新增圖書</a>
+<BR>
+{% for book in book_list %}
+  <a href="/web/book/{{book.id}}/delete">刪除</a>
+  <a href="/web/book/{{book.id}}/update">修改</a>  
+  <a href="/web/book/{{book.id}}">{{book.title}}</a><BR>
+{% endfor %}
+    {% load pagination %}
+    {% get_pagination %}
+{% endblock %}

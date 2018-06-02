@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/web/reader/create">新增讀者</a>
+<BR>
+{% for reader in reader_list %}
+  <a href="/web/reader/{{reader.id}}/delete">刪除</a>
+  <a href="/web/reader/{{reader.id}}/update">修改</a>    
+  <a href="/web/reader/{{reader.id}}">{{reader.realname}}</a><BR>
+{% endfor %}
+    {% load pagination %}
+    {% get_pagination %}
+{% endblock %}
